@@ -1,0 +1,8 @@
+:root {
+  --cs-color: blue;
+  --cs-variance: 20;
+}
+
+body {
+  background-color: #0000CC;
+}

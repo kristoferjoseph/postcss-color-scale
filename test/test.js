@@ -1,21 +1,34 @@
+var fs = require('fs');
 var postcss = require('postcss');
-var expect  = require('chai').expect;
-
+var expect = require('chai').expect;
 var plugin = require('../');
 
-var test = function (input, output, opts, done) {
-    postcss([ plugin(opts) ]).process(input).then(function (result) {
-        expect(result.css).to.eql(output);
-        done();
-    });
-};
+function filename(name) {
+  return 'test/fixtures/' + name + '.css';
+}
 
-describe('postcss-color-scale', function () {
+function read(name) {
+  return fs.readFileSync(name, 'utf8');
+}
 
-    /* Write tests here
+function test(input, output, opts, done) {
+  postcss([plugin(opts)]).process(input).then(function(result) {
+    expect(result.css).to.equal(output);
+    done();
+  });
+}
 
-    it('does something', function (done) {
-        test('a{ }', 'a{ }', { }, done);
-    });*/
+describe('postcss-color-scale', function() {
 
+  it('should parse color scale', function(done) {
+    var input = read(filename('scale'));
+    var output = read(filename('scale.expected'));
+    test(input, output, {}, done);
+  });
+
+  it('should parse advanced color scale', function(done) {
+    var input = read(filename('scale-advanced'));
+    var output = read(filename('scale-advanced.expected'));
+    test(input, output, {}, done);
+  });
 });

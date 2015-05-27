@@ -1,0 +1,10 @@
+:root {
+  --cs-primary: blue;
+  --cs-secondary: red;
+  --cs-tertiary: green;
+  --cs-variance: 20;
+}
+
+body {
+  background-color: #0000CC;
+}
