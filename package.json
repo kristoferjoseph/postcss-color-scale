@@ -16,7 +16,7 @@
     "url": "https://github.com/kristoferjoseph/postcss-color-scale.git"
   },
   "dependencies": {
-    "color-scale": "^1.0.0",
+    "color-scale": "^1.1.0",
     "postcss": "^4.1.5"
   },
   "devDependencies": {
