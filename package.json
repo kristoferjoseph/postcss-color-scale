@@ -1,6 +1,6 @@
 {
   "name": "postcss-color-scale",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin to generate color scale",
   "keywords": [
     "postcss",
