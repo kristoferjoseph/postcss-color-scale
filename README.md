@@ -12,32 +12,72 @@ Use
 
 ### Standard use case
 
+#### Input
+
 ```css
 :root {
-  --cs-color: #007FFF;
-  --cs-variance: 10;
+  --cs-color: blue;
+  --cs-variance: 20;
 }
 
 body {
-  color: cs(-2);
-  background-color: cs(1);
+  background-color: cs(-1);
+}
+```
+
+#### Output
+
+```css
+:root {
+  --cs-color: blue;
+  --cs-variance: 20;
+}
+
+body {
+  background-color: #0000CC;
 }
 ```
 
 ### Advanced use case
 You can define any name for your color as long as you prefix the custom property with `--cs-` it will be available as the second argument to the `cs()` function.
 
+#### Input
+
 ```css
 :root {
-  --cs-primary: #007FFF;
-  --cs-secondary: #007FFF;
-  --cs-accent: #007FFF;
-  --cs-variance: 10;
+  --cs-primary: blue;
+  --cs-secondary: red;
+  --cs-tertiary: green;
+  --cs-variance: 20;
 }
 
 body {
-  color: cs(-2, primary);
-  border-color: cs(3, accent);
+  color: cs(-1, primary);
   background-color: cs(1, secondary);
+  border-color: cs(2, tertiary);
 }
 ```
+
+#### Output
+
+```css
+:root {
+  --cs-primary: blue;
+  --cs-secondary: red;
+  --cs-tertiary: green;
+  --cs-variance: 20;
+}
+
+body {
+  color: #0000CC;
+  background-color: #FF3333;
+  border-color: #66E666;
+}
+```
+
+## How it works
+
+The way the scale works is you supply a color and a variance ( meaning __the difference between steps__ ) then use the `cs()` function in your stylesheet to get a step of color from the scale.
+Positive numbers go up the scale giving you a lighter color while negative numbers go down the scale giving you a darker color; where zero is the base color.
+`cs(0)` will give you the base color. `cs(1)` will give you a lighter color and `cs(-1)` will give you a darker color.
+

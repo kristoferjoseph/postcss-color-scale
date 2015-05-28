@@ -6,5 +6,7 @@
 }
 
 body {
-  background-color: cs(-1, primary);
+  color: cs(-1, primary);
+  background-color: cs(1, secondary);
+  border-color: cs(2, tertiary);
 }
