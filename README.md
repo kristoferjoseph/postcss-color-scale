@@ -10,6 +10,13 @@ Install
 Use
 ---
 
+From the command line:
+```
+post-css --use postcss-color-scale styles.css -o styles.out.css
+```
+This can be used with [postcss-cli](https://github.com/code42day/postcss-cli) in a [npm run script](https://docs.npmjs.com/cli/run-script).
+[Great example post](http://substack.net/task_automation_with_npm_run)
+
 ### Standard use case
 
 #### Input
