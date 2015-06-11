@@ -1,0 +1,7 @@
+:root {
+  --variable: 10;
+}
+
+body {
+  color: cs(0);
+}

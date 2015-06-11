@@ -52,6 +52,10 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
           // Defaults to the --cs-color variable
           var name = parts[1] ? parts[1].trim() : 'color';
           var colorObj = colors[name];
+          if (!colorObj) {
+            console.error('Color name ' + name + ' not defined');
+            return 'cs(' + body + ')';
+          }
           var cs = colorObj.func;
           return cs(value);
         });

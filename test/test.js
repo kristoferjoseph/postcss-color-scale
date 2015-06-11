@@ -31,4 +31,10 @@ describe('postcss-color-scale', function() {
     var output = read(filename('scale-advanced.expected'));
     test(input, output, {}, done);
   });
+
+  it('should not error when no colors supplied', function(done) {
+    var input = read(filename('empty'));
+    var output = read(filename('empty.expected'));
+    test(input, output, {}, done);
+  });
 });
