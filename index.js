@@ -7,10 +7,12 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
   opts = opts || {};
   var color = opts.color || 'grey';
   var variance = opts.variance || 0;
+  var colors = {};
 
   return function(css) {
+    var cs;
     var declarations = [];
-    var colors = {};
+    var colorKey;
 
     css.eachDecl(function transformDecl(decl) {
       if (!decl.value) {
@@ -21,9 +23,12 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
         if (decl.prop === '--cs-variance') {
           variance = decl.value;
         } else {
-          colors[decl.prop.split('--cs-')[1]] = {
-            value: decl.value
-          };
+          colorKey = decl.prop.split('--cs-')[1];
+          if (colorKey) {
+            colors[colorKey] = {
+              value: decl.value
+            };
+          }
         }
       }
 
@@ -56,7 +61,7 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
             console.error('Color name ' + name + ' not defined');
             return 'cs(' + body + ')';
           }
-          var cs = colorObj.func;
+          cs = colorObj.func;
           return cs(value);
         });
       }, decl.source);
