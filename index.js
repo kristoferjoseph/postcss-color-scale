@@ -14,7 +14,7 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
     var declarations = [];
     var colorKey;
 
-    css.eachDecl(function transformDecl(decl) {
+    css.walkDecls(function transformDecl(decl) {
       if (!decl.value) {
         return;
       }
@@ -58,7 +58,6 @@ module.exports = postcss.plugin('postcss-color-scale', function(opts) {
           var name = parts[1] ? parts[1].trim() : 'color';
           var colorObj = colors[name];
           if (!colorObj) {
-            console.error('Color name ' + name + ' not defined');
             return 'cs(' + body + ')';
           }
           cs = colorObj.func;
